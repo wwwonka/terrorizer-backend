@@ -52,6 +52,15 @@ const plugins = [
 			},
 		},
 	},
+	{
+		resolve: `medusa-payment-stripe`,
+		options: {
+		  api_key: process.env.STRIPE_API_KEY,
+		  // webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
+		  capture: true,
+		  automatic_payment_methods: true
+		},
+	  },
 ];
 
 const modules = {
@@ -71,14 +80,17 @@ const modules = {
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
-	jwtSecret: process.env.JWT_SECRET,
-	cookieSecret: process.env.COOKIE_SECRET,
-	store_cors: STORE_CORS,
-	database_url: DATABASE_URL,
-	admin_cors: ADMIN_CORS,
-	// Uncomment the following lines to enable REDIS
-	redis_url: REDIS_URL,
-};
+  jwtSecret: process.env.JWT_SECRET,
+  cookieSecret: process.env.COOKIE_SECRET,
+  //database_database: "./medusa-db.sql",
+  database_url: DATABASE_URL,
+  database_type: DATABASE_TYPE,
+  store_cors: STORE_CORS,
+  admin_cors: ADMIN_CORS,
+  // Uncomment the following lines to enable REDIS
+  // redis_url: REDIS_URL
+}
+
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
