@@ -30,7 +30,6 @@ const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 
 const DATABASE_URL =
 	process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
-console.log(DATABASE_URL);
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
@@ -56,12 +55,12 @@ const plugins = [
 	{
 		resolve: `medusa-payment-stripe`,
 		options: {
-			api_key: process.env.STRIPE_API_KEY,
-			webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
-			capture: true,
-			automatic_payment_methods: true,
+		  api_key: process.env.STRIPE_API_KEY,
+		  webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
+		  capture: true,
+		  automatic_payment_methods: true
 		},
-	},
+	  },
 ];
 
 const modules = {
@@ -89,6 +88,7 @@ const projectConfig = {
 	// Uncomment the following lines to enable REDIS
 	redis_url: REDIS_URL,
 };
+
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
